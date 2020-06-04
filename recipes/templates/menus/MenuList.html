@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Menu List{% endblock %}
+
+{% block content %}
+    <h1>Menus</h1>
+    {% if menu_list %} 
+        <ul>
+            {% for menu in menu_list %}
+                <li><a href="{% url 'recipes:menu_detail' menu.id %}">{{ menu }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No menus registered.</p>
+    {% endif %}
+{% endblock %}

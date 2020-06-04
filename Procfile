@@ -1,0 +1,1 @@
+web: gunicorn recipe_cca.wsgi

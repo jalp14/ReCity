@@ -1,0 +1,25 @@
+
+{% if user.id == recipe.author.id %}
+    <table class="table table-sm" id="ingredients_table">
+        <tr>
+            
+            <th class="text-center">Ingredients</th>
+            <th class="text-center"> </th>
+            <th class="text-center"><a style="color: white;" class="btn btn-primary my-2 my-sm-0" onclick="addIngredientsTable('{{recipe.id}}')" >Add</a></th>
+
+        </tr>
+        {% for ingredient in recipe.ingredient_set.all %}
+            <tr>
+                <td class="text-center"><a class="ing">{{ ingredient.ingredient_name }}</a></td>
+                <td class="text-center"><a style="color: white; " class="btn btn-primary my-2 my-sm-0" onclick="updateIngredientsTable('{{ingredient.id}}', '{{ingredient.ingredient_name}}')">Update</a></td>
+                <td class="text-center"><a style="color: white;" class="btn btn-primary my-2 my-sm-0" onclick="deleteIngredient('{{ingredient.id}}')">Delete</a></td>
+                
+            </tr>
+        {% endfor %}
+        
+    </table>
+{% else %}
+    {% for ingredient in recipe.ingredient_set.all %}
+        <li class="ing">{{ ingredient.ingredient_name }}</li>
+    {% endfor %}
+{% endif %}

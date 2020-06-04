@@ -1,0 +1,830 @@
+* {
+    box-sizing: border-box;
+   
+}
+
+body {
+    font-family: 'Open Sans' !important;
+    margin: 0;
+}
+
+.content {
+    margin-top: 1.25px;
+}
+
+.btn-primary {
+    border-radius: 20px !important;
+    background-color: #43af2d !important;
+    border-color: #67c954 !important;
+    isolation: isolate;
+}
+
+.btn-primary:hover {
+    background-color: #67c954 !important;
+}
+
+.btn-outline-success {
+    background-color: #fff !important;
+}
+
+.card .btn {
+    width: 20%;
+    border-radius: 20px !important;
+    background-color: #43af2d !important;
+    border-color: #67c954 !important;
+    isolation: isolate;
+}
+
+
+.navbar {
+    padding: 1em 0 !important;
+}
+
+.navbar-brand {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 50px);
+    margin: 0 !important;
+    transition: .3s;
+}
+
+.navbar-brand:hover {
+    top: calc(50% - 25px);
+}
+
+.navbar.transparent.navbar-expand-sm {
+    background-color: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: blur(2em);
+    backdrop-filter: blur(2em);
+}
+
+.darkmode--activated .navbar.transparent.navbar-expand-sm {
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-backdrop-filter: blur(2em);
+    backdrop-filter: blur(2em);
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.navbar img {
+    width: 100px;
+}
+
+.content {
+    margin-top: 6rem;
+}
+
+.container-recipe {
+    padding-top: 1rem;
+}
+
+.recipe_detail {
+    color: rgb(112, 112, 112);
+}
+/*  GENERAL STYLES  */
+
+.block-heading {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: rgb(121, 121, 121);
+    letter-spacing: 0.4px;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+footer {
+    border-top: 1px solid rgb(206, 206, 206);
+    padding: 0.85rem 0;
+    color: rgb(153, 153, 153);
+}
+
+.custom-control {
+    margin-left: 2em;
+}
+
+.settings {
+    padding-bottom: 1.25rem;
+}
+
+
+/*   INDEX   */
+
+.slide .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    color: white;
+    text-align: center;
+}
+
+.banner-text {
+    color: white;
+    text-shadow: 2px 2px;
+    text-align: end;
+}
+
+.banner {
+    font-family: 'Lobster', cursive;
+    background-blend-mode: darken;
+    background-size: 100%;
+    padding: 2rem 0rem;
+    text-align: end;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    isolation: isolate;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.index-grid {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -7px;
+}
+
+.index-categories {
+    text-align: center;
+}
+
+.all-grid {
+    flex-wrap: wrap;
+}
+
+.all-grid .card {
+  box-shadow: 0 11px 14px 3px rgba(202,209,219,0.71);;
+  transition: 0.3s;
+  border-radius: 0.5em;
+  width: 100%;
+  alignment: center;
+}
+
+.all-grid .card-img-top {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.all-grid .card:hover {
+    background-blend-mode: darken;
+    background-size: 100%;
+    transform: scale(1);
+}
+
+.card {
+  box-shadow: 0 11px 14px 3px rgba(202,209,219,0.71);;
+  transition: 0.3s;
+  border-radius: 0.5em;
+  text-align: left;
+}
+
+
+.all-grid .card-text{
+    color: black;
+}
+
+.darkmode--activated .all-grid card-text {
+    color: white;
+}
+
+.more {
+    width: 25%;
+    position: relative;
+}
+
+.darkmode--activated .card {
+  box-shadow: 0 11px 14px 3px rgba(110,100,100,0.150);
+  transition: 0.3s;
+  border-radius: 0.5em;
+  background-color: rgb(47,45,45);
+}
+
+.card:hover {
+    background-blend-mode: darken;
+    background-size: 100%;
+    transform: scale(1.06);
+}
+
+.card-title {
+    margin-top: 1rem;
+    margin-left: 0.1rem;
+    text-align: center;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    text-align: center;
+    margin-left: 0.1rem;
+}
+
+.card-text {
+    text-align: left;
+    margin-left: 0.1rem;
+}
+
+.index-section {
+    margin: 35px 0 35px 0;
+}
+
+.recipe-link:hover {
+    text-decoration: none;
+    width: auto;
+}
+
+.recipe-tile-outer {
+    flex: 0 0 23%;
+    margin: 2% 1%;
+    padding-bottom: 0.5rem;
+    isolation: isolate;
+}
+
+.recipe-tile-outer a {
+    display: block;
+    width: 100%;
+}
+
+.darkmode--activated .recipe-tile-inner {
+    text-decoration: none;
+    width: 100%;
+    height: 7rem;
+    display: inline-block;
+    /* margin: 1em; */
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    background: #3970E0;
+
+    box-shadow: 0 11px 14px 3px rgba(110,100,100,0.150);
+    color: #fff;
+    text-align: left;
+    display: flex;
+    transition: 0.3s;
+}
+
+.recipe-tile-inner {
+    text-decoration: none;
+    width: 100%;
+    height: 7rem;
+    display: inline-block;
+    /* margin: 1em; */
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    background: #3970E0;
+
+    box-shadow: 0 11px 14px 3px rgba(202,209,219,0.71);
+    color: #fff;
+    text-align: left;
+    display: flex;
+    transition: 0.3s;
+}
+
+.recipe-tile-title {
+    align-self: flex-end;
+    font-weight: 600;
+    margin: 0;
+}
+
+.recipe-tile-inner:hover {
+    background: rgb(67, 130, 255);
+    transform: scale(1.06);
+}
+
+
+
+.nutritional-cell {
+    display: inline-block;
+    margin-bottom:20px
+}
+
+.nutritional-cell ul {
+    padding-left: 0;
+}
+
+
+.nutritional-cell .title {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #000;
+    padding-bottom:13px
+}
+
+.darkmode--activated .nutritional-cell .title {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    padding-bottom:13px
+}
+
+.nutritional-cell .reference {
+    font-size: 11px;
+    line-height:14px
+}
+
+.nutritional-cell ul {
+    display:inherit
+}
+
+.nutritional-cell ul .nutritional-item {
+    border: 1px solid #000;
+    border-top-left-radius: 100% 30px;
+    border-top-right-radius: 100% 30px;
+    border-bottom-left-radius: 100% 30px;
+    border-bottom-right-radius: 100% 30px;
+    display: block;
+    float: left;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #000;
+    height: 80px;
+    margin-bottom: 10px;
+    text-align: center;
+    width:55px
+}
+
+.darkmode--activated .nutritional-cell ul .nutritional-item {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+
+.nutritional-cell ul .nutritional-item .value {
+    display: block;
+    font-size: 11px;
+    line-height: 10px;
+    padding-top:14px
+}
+
+.nutritional-cell ul .nutritional-item .value.energy {
+    font-weight: 300;
+    font-size: 10px;
+    padding-top: 8px;
+    width: 47px;
+    margin:0 auto
+}
+
+.nutritional-cell ul .nutritional-item .top {
+    border-bottom: 1px solid #000;
+    height:51px
+}
+
+.darkmode--activated .nutritional-cell ul .nutritional-item .top {
+    border-bottom: 1px solid #fff;
+    height:51px
+}
+
+.nutritional-cell ul .nutritional-item .top .title {
+    display: block;
+    font-size: 10px;
+    height: 15px;
+    padding-top:5px
+}
+
+.nutritional-cell ul .nutritional-item .top.low {
+    border-top-left-radius: 90% 27px;
+    border-top-right-radius: 90% 27px;
+    background-color:#0fce08;
+}
+
+.nutritional-cell ul .nutritional-item .top.medium {
+    border-top-left-radius: 90% 27px;
+    border-top-right-radius: 90% 27px;
+    background-color:#fc9803;
+}
+
+.nutritional-cell ul .nutritional-item .top.high {
+    border-top-left-radius: 90% 27px;
+    border-top-right-radius: 90% 27px;
+    background-color:#dd1d00;
+}
+
+.nutritional-cell ul .nutritional-item .bottom {
+    border-bottom-left-radius: 90% 27px;
+    border-bottom-right-radius: 90% 27px;
+    height:27px
+}
+
+.nutritional-cell ul .nutritional-item .bottom .value {
+    padding-top:7px
+}
+
+.nutritional-cell ul .nutritional-item .bottom.high {
+    background-color:#dd1d00;
+}
+
+.nutritional-cell ul .nutritional-item .bottom.medium {
+    background-color:#fc9803;
+}
+
+.nutritional-cell ul .nutritional-item .bottom.low {
+    background-color:#0fce08;
+}
+
+.ing {
+    color: black;
+}
+
+.darkmode--activated .ing {
+    color: white;
+}
+
+.darkmode--activated .ins {
+    color: white;
+}
+
+/*  RECIPE DETAIL  */
+.recipe_header {
+    background: #F6F7F8;
+    padding: 2.5em 2em;
+    margin-bottom: 1.25rem;
+    border-radius: 5px;
+}
+
+.recipe-instructions {
+    color: black;
+    text-align: justify;
+}
+
+.label-container {
+    margin: -5px;
+    margin-top: 1.5rem;
+}
+
+.category-label {
+    text-align: center;
+    padding: 0 !important;
+    margin: 11px;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 2px 10px 2px rgba(202,209,219,0.71);
+    font-weight: 600;
+    font-size: 80%;
+    text-transform: uppercase;
+    color: #f0a00c;
+    margin: 0 12px 12px 0;
+    display: inline-block;
+}
+
+.darkmode--activated .category-label {
+    background: #000;
+    box-shadow: 0 2px 10px 2px rgba(110,100,100,0.71);
+}
+
+.category-label p {
+    margin: 5px 12px;
+}
+
+.heading {
+    display: table;
+    white-space: nowrap;
+    text-align: center;
+    text-transform: uppercase;
+    color: #3e5b21;
+    font-weight: 500;
+    font-style: normal;
+    letter-spacing: 2.75px;
+    margin: 0.85em 0;
+    font-size: 1.4rem;
+}
+
+.heading:before {
+    border-right: 10px solid white;
+    background: linear-gradient(to bottom,#ccc,#ccc) no-repeat center/100% 1px;
+    content: '';
+    display: table-cell;
+    width: 50%;
+}
+
+.heading:after {
+    border-left: 10px solid white;
+    background: linear-gradient(to bottom,#ccc,#ccc) no-repeat center/100% 1px;
+    content: '';
+    display: table-cell;
+    width: 50%;
+}
+
+
+/*  FORMS  */
+.form {
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 1.4rem;
+    background: rgb(236, 236, 236);
+    border-radius: 15px;
+}
+
+.form h1, p {
+    text-align: center;
+}
+
+
+.form p {
+    margin-top: 1rem;
+}
+
+.mb-0 {
+    text-align: left;
+}
+
+.form input[type=submit], .form-create input[type=submit]{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s;
+    margin: 0 auto;
+}
+
+.form .control-label, .form-create .control-label {
+    margin-bottom: .1rem;
+    text-transform: uppercase;
+    color: rgb(73, 73, 73);
+    font-size: 80%;
+}
+
+.form .form-group {
+    margin-top: 1rem;
+}
+
+.form-create {
+    max-width: 650px;
+}
+
+.form-create input[type=submit]{
+    display: inline-block !important;
+}
+
+.form-create .selectize-control {
+    height: auto;
+    padding: 0;
+    border: 0;
+}
+
+   /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+
+.close:hover .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-photos-btn {
+ position: absolute;
+ top: 8px;
+ right: 16px;
+ width:30px;
+ height:30px;
+ z-index: 1;
+}
+
+.edit-instructions-btn {
+ position: absolute;
+ top: 42px;
+ right: 16px;
+ width:30px;
+ height:30px;
+}
+
+
+.btn img:hover {
+    background-blend-mode: darken;
+    background-size: 100%;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+#logo {
+    width: 60%;
+    height: 60vh;
+    display: inline-block;
+    padding: 0;
+    margin: 0;    
+    animation: fill 0.5s ease forwards 4s;
+}
+
+
+#logo path:nth-child(1) {
+    stroke-dasharray: 901;
+    stroke-dashoffset: 901;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(2) {
+    stroke-dasharray: 901;
+    stroke-dashoffset: 901;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(3) {
+    stroke-dasharray: 901;
+    stroke-dashoffset: 901;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(4) {
+    stroke-dasharray: 336;
+    stroke-dashoffset: 336;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(5) {
+    stroke-dasharray: 336;
+    stroke-dashoffset: 336;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(6) {
+    stroke-dasharray: 336;
+    stroke-dashoffset: 336;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(7) {
+    stroke-dasharray: 336;
+    stroke-dashoffset: 336;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(8) {
+    stroke-dasharray: 405;
+    stroke-dashoffset: 405;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(9) {
+    stroke-dasharray: 405;
+    stroke-dashoffset: 405;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(10) {
+    stroke-dasharray: 405;
+    stroke-dashoffset: 405;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(11) {
+    stroke-dasharray: 405;
+    stroke-dashoffset: 405;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(12) {
+    stroke-dasharray: 405;
+    stroke-dashoffset: 405;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(13) {
+    stroke-dasharray: 369;
+    stroke-dashoffset: 369;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(14) {
+    stroke-dasharray: 369;
+    stroke-dashoffset: 369;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(15) {
+    stroke-dasharray: 367;
+    stroke-dashoffset: 367;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(16) {
+    stroke-dasharray: 367;
+    stroke-dashoffset: 367;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(17) {
+    stroke-dasharray: 367;
+    stroke-dashoffset: 367;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(18) {
+    stroke-dasharray: 367;
+    stroke-dashoffset: 367;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(19) {
+    stroke-dasharray: 264;
+    stroke-dashoffset: 264;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(20) {
+    stroke-dasharray: 464;
+    stroke-dashoffset: 464;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(21) {
+    stroke-dasharray: 464;
+    stroke-dashoffset: 464;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(22) {
+    stroke-dasharray: 464;
+    stroke-dashoffset: 464;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(23) {
+    stroke-dasharray: 464;
+    stroke-dashoffset: 464;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(24) {
+    stroke-dasharray: 464;
+    stroke-dashoffset: 464;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+#logo path:nth-child(25) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(26) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(27) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(28) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(29) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(30) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+#logo path:nth-child(31) {
+    stroke-dasharray: 293;
+    stroke-dashoffset: 293;
+    animation: line-anim 2s ease forwards 2s;
+}
+
+@keyframes line-anim {
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill {
+    from{
+        fill: transparent;
+    }
+    to{
+       fill: rgb(179, 255, 153)
+    }
+}

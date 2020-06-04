@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <h1>Are you sure you want to delete your account? (WARNING: IRREVERSIBLE!) </h1>
+    <p><input class="btn btn-primary my-2 my-sm-0" type="submit" value="Yes"/> <a style="color: white;" class="btn btn-primary my-2 my-sm-0" onclick="javascript:history.go(-1)">No</a></p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+
+:root {
+  --marquee-width: 80vw;
+  --marquee-height: 20vh;
+  --marquee-elements: 6;
+  --marquee-elements-displayed: 5;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+  --marquee-animation-duration: calc(var(--marquee-elements) * 9s);
+}
+
+.marquee {
+  width: var(--marquee-width);
+  height: var(--marquee-height);
+  background-color: white;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.darkmode--activated .marquee {
+  width: var(--marquee-width);
+  height: var(--marquee-height);
+  background-color: black;
+  color: black;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee:before, .marquee:after {
+  position: absolute;
+  top: 0;
+  width: 10rem;
+  height: 100%;
+  content: "";
+  z-index: 1;
+}
+
+.marquee:before {
+  left: 0;
+}
+.marquee:after {
+  right: 0;
+}
+
+.marquee-row {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  animation: scrolling var(--marquee-animation-duration) linear infinite;
+}
+
+@keyframes scrolling {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+}
+
+@keyframes scrolling-backwards {
+  0% { transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements))); }
+  100% { transform: translateX(0); }
+}
+
+.marquee-row li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--marquee-element-width);
+  max-height: 100%;
+  font-size: 5rem;
+  white-space: nowrap;
+}
+
+.marquee-row li img {
+  width: 93%;
+  border: 1px solid #b8b8b8;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.darkmode--activated .marquee-row li img {
+  width: 90%;
+  /* height: 100%; */
+  border: 1px solid #eee;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(110, 100, 100, 0.19);
+}
+
+@media (max-width: 600px) {
+  html { font-size: 12px; }
+  :root {
+    --marquee-width: 100vw;
+    --marquee-height: 16vh;
+    --marquee-elements-displayed: 3;
+  }
+  .marquee:before, .marquee:after { width: 5rem; }
+}
+
+.rounded-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.imgtext {
+  position: absolute;
+  bottom: 4px;
+  left: 16px;
+  color: black;
+}
+
+.darkmode--activated .imgtext {
+  position: absolute;
+  bottom: 4px;
+  left: 16px;
+  color: white;
+}

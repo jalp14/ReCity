@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}My profile{% endblock %}
+
+{% block content %}
+    <div class="recipe_header">
+        <div class="recipe_info">
+            <h1>{{ user.username }}</h1>
+        </div>
+    </div>
+
+    <h3 class="block-heading">My recipes</h3>
+    <div class="index-grid">
+        {% if user_recipes %} 
+            {% for recipe in user_recipes %}
+                 <div class="recipe-tile-outer" id="recipe-tile-outer">
+                    <div class="card" style="width: 16rem">
+                    <a class="recipe-link" href="{% url 'recipes:recipe_detail' recipe.id %}">
+
+{#                    <img class="card-img-top" src="https://elvino.co.uk/wp-content/uploads/2016/03/Food-banner-2.jpg" style="width: 100%"/>#}
+
+                        {% for photo in recipe.thumbnail_set.all %}
+                            <img class="card-img-top" src="{{ photo.image.url }}">
+                        {% endfor %}
+
+
+                    <h5 class="card-title"> {{ recipe.recipe_title }} </h5>
+                    <h6 class="card-subtitle mb-2 text-muted"> {{ recipe.author }} </h6>
+                        </a>
+                    </div>
+                 </div>
+            {% endfor %}
+        {% else %}<p>No recipes are available.</p>{% endif %}
+    </div>
+    
+    
+    <h3 class="block-heading">My menus</h3>
+    <div class="index-grid">
+        {% if user_menus %} 
+            {% for menu in user_menus %}
+                <div class="recipe-tile-outer">
+                    <a class="recipe-link" href="{% url 'recipes:menu_detail' menu.id %}">
+                        <div class="recipe-tile-inner">
+                            <p class="recipe-tile-title">{{ menu.creation_date }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}<p>No menus are available.</p>{% endif %}
+    </div>
+
+{% endblock %}

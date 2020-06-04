@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block title %}Change Username{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1>Change Username</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class="btn btn-primary my-2 my-sm-0" type="submit" value="Submit">
+    </form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}New Form{% endblock %}
+{% load static %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'static/css/selectize.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'static/css/autocomplete.css' %}">
+</head>
+
+<div class="form-create">
+    <h1>Create new recipe</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger", role="alert">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group" id="container">
+            <label class="control-label  requiredField">Quantity:</label>
+                <input type="text" name="qty0" required id="qty0"/>
+            <label class="control-label  requiredField">Ingredient:</label>
+                <input type="text" name="ing0" required id="ing0" oninput="getIngredients()"/>
+        </div>
+        <p style="text-align: left;">
+            <a href="#" id="add">+ Add another ingredient</a>
+        </p>
+        
+        <input class="btn btn-primary my-2 my-sm-0" type="submit" value="Submit">
+        <ul id="list"/>
+    </form>
+</div>
+
+<script type="text/javascript" src="{% static "static/scripts/jquery.autocomplete.js" %}"></script>
+<script type="text/javascript" src="{% static "static/scripts/script.js" %}"></script>
+<script type="text/javascript" src="{% static "static/scripts/selectize.min.js" %}"></script>
+<script type="text/javascript" src="{% static "static/scripts/PreviewImages.js" %}"></script>
+<script type="text/javascript">
+    $('#id_categories_names').selectize({
+        plugins: ['restore_on_backspace'],
+        delimiter: ',',
+        persist: false,
+        create: function(input) {
+            return {
+                value: input,
+                text: input
+            }
+        }
+    });
+</script>
+
+{% endblock %}

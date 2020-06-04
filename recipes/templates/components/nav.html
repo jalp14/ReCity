@@ -1,0 +1,42 @@
+{% load static %}
+<nav class="navbar transparent navbar-expand-sm fixed-top">
+    <div class="container">
+        <div class="navbar-nav mr-auto">
+            <a class="btn btn-primary mr-2" href="{% url 'recipes:menu_new' %}"> <strong>+</strong> Menu</a>
+            <a class="btn btn-primary mr-2" href="{% url 'recipes:recipe_new' %}"> <strong>+</strong> Recipe</a>
+        </div>
+        
+        <a class="navbar-brand" href="{% url 'recipes:index' %}">
+            {% comment %} <img src="{% static 'recipes/recity.png' %}" alt="Recity"> {% endcomment %}
+            <img src="{% static 'static/images/recity.png' %}" alt="Recity" id="recity" hidden="false">
+            <img src="{% static 'static/images/recity-dark.png' %}" alt="Recity" id="recity-dark" hidden="true">
+        </a>
+        
+
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     {{ user.get_username }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'recipes:profile' %}">My profile</a>
+                    <a class="dropdown-item" href="{% url 'recipes:settings' %}">Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                </div>
+            </li>
+            {% else %}
+            <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <button action="login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
+            </form>
+            {% endif %}
+        </ul>
+
+        <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="darkswitch" onclick="activateDKMOde()">
+      <label class="custom-control-label" for="darkswitch"></label>
+    </div>
+    </div>
+</nav>

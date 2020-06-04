@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Recipe detail{% endblock %}
+{% load static %}
+{% block content %}
+    
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    
+    {% if user.id == recipe.author.id %}
+        <a class="btn btn-primary my-2 my-sm-0" href={% url 'recipes:menu_edit' menu.id %}>Edit</a>
+        <a class="btn btn-primary my-2 my-sm-0" href={% url 'recipes:menu_delete' menu.id %}>Delete</a>
+    {% endif %}
+
+    <div class="recipe_header">
+        <h1>{{ menu.title }}</h1>
+    </div>
+
+    <div class="index-grid">
+        {% if recipe_list %} 
+            {% for recipe in recipe_list %}
+                <div class="recipe-tile-outer" id="recipe-tile-outer">
+                    <a class="recipe-link" href="{% url 'recipes:recipe_detail' recipe.id %}">
+                        <div class="recipe-tile-inner">
+                            <p class="recipe-tile-title">{{ recipe.recipe_title }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}<p>This menu doesn't contain any recipes.</p>{% endif %}
+    </div>
+{% endblock %}
+

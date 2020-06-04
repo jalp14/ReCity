@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% block title %}Recipe detail{% endblock %}
+{% load static %}
+{% block content %}
+    
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <div class="container-recipe">
+        {% if user.id == recipe.author.id %}
+            <a class="btn btn-primary my-2 my-sm-0" href={% url 'recipes:recipe_edit_thumbnail' recipe.id %}>Edit Thumbnail</a>
+            <a class="btn btn-primary my-2 my-sm-0" href={% url 'recipes:recipe_delete' recipe.id %}>Delete Recipe</a>
+        {% endif %}
+
+        <div class="recipe_header">
+            <div class="row">
+                <div class="col">
+                    <div class="edit-over">
+                    <div class="recipe_info">
+                        <h1>{{ recipe.recipe_title }}</h1>
+                    </div>
+                    <div class="nutritional-cell">
+                        <span class="title">Each Serving</span>
+                        <ul id="nutritional-lozenge">
+                            <li class="nutritional-item">
+                                <div class="top -">
+                                    <span class="title">Energy</span>
+                                    <span class="value energy" id="energy"></span>
+                                    <span class="energyJ" id="energyJ"></span>
+                                </div>
+                                <div class="bottom -">
+                                    <span class="value" id="energyper"></span>
+                                </div>
+                            </li>
+
+                            <li class="nutritional-item">
+                                <div class="" id="topfat">
+                                    <span class="title">Fat</span>
+                                    <span class="value" id="total_fats"></span>
+                                </div>
+                                <div class="" id="bottomfat">
+                                    <span class="value" id="fatper"></span>
+                                </div>
+                            </li>
+
+                            <li class="nutritional-item">
+                                <div class="" id="topsats">
+                                    <span class="title">Saturates</span>
+                                    <span class="value" id="saturates"></span>
+                                </div>
+                                <div class="" id="bottomsats">
+                                    <span class="value" id="satsper"></span>
+                                </div>
+                            </li>
+
+                            <li class="nutritional-item">
+                                <div class="" id="topsugars">
+                                    <span class="title">Sugars</span>
+                                    <span class="value" id="sugar"></span>
+                                </div>
+                                <div class="" id="bottomsugars">
+                                    <span class="value" id="sugarper"></span>
+                                </div>
+                            </li>
+
+                            <li class="nutritional-item">
+                                <div class="" id="topsalt">
+                                    <span class="title">Salt</span>
+                                    <span class="value" id="salt"></span>
+                                </div>
+                                <div class="" id="bottomsalt">
+                                    <span class="value" id="saltper"></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="recipe-desc">
+                        <p style="text-align: start;">"{{recipe.descriptions}}"</p>
+                    </div>
+                    <div class="label-container">
+                        {% for category in recipe.categories.names %}
+                            <div class="category-label">
+                                <p>{{ category }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if user.id == recipe.author.id %}
+                    <a href={% url 'recipes:recipe_edit' recipe.id %}>
+                        <img id="editRecipe" class="edit-photos-btn" src="{% static "static/images/edit.png" %}"></img>
+                    </a>
+                    {% endif %}
+                </div>
+                </div>
+                <div class="col">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="edit-over">
+                            <div class="carousel-inner">
+                                {% for photo in recipe.photo_set.all %}
+                                    {% if forloop.first %}<div class="carousel-item active">
+                                    {% else %}<div class="carousel-item">{% endif %}
+                                        <img class="d-block w-100" src="{{ photo.image.url }}" class="img-responsive" width="auto" height="340">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        {% if user.id == recipe.author.id %}
+                        <a href={% url 'recipes:recipe_edit_photo' recipe.id %}>
+                            <img id="editPhotos" class="edit-photos-btn" src="{% static "static/images/edit.png" %}"></img>
+                        </a>
+                        {% endif %}
+                        </div>
+                    </div>
+
+                        {% comment %} {% for photo in recipe.photo_set.all %}
+                            <img src="{{ photo.image.url }}" class="img-responsive" width="auto" height="340"><br>
+                        {% endfor %} {% endcomment %}
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2 class="heading" id="ingredients_title">Ingredients</h2>
+                <div class="main-ingredients-table">
+                    {% if user.id == recipe.author.id %}
+    <table class="table table-sm" id="ingredients_table">
+        <tr>
+
+            <th class="text-center">Ingredients</th>
+            <th class="text-center"> </th>
+            <th class="text-center"><a style="color: white;" class="btn btn-primary my-2 my-sm-0" onclick="addIngredientsTable('{{recipe.id}}')" >Add</a></th>
+
+        </tr>
+        {% for ingredient in recipe.ingredient_set.all %}
+            <tr>
+                <td class="text-center"><a class="ing">{{ ingredient.ingredient_name }}</a></td>
+                <td class="text-center"><a style="color: white; " class="btn btn-primary my-2 my-sm-0" onclick="updateIngredientsTable('{{ingredient.id}}', '{{ingredient.ingredient_name}}')">Update</a></td>
+                <td class="text-center"><a style="color: white;" class="btn btn-primary my-2 my-sm-0" onclick="deleteIngredient('{{ingredient.id}}')">Delete</a></td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+{% else %}
+    {% for ingredient in recipe.ingredient_set.all %}
+        <li class="ing">{{ ingredient.ingredient_name }}</li>
+    {% endfor %}
+{% endif %}
+
+                </div>
+            </div>
+
+            <div class="col">
+                <h2 class="heading">Instructions</h2>
+                {% if user.id == recipe.author.id %}
+                <div class="edit-over">
+                    <img id="editInstructions" class="edit-instructions-btn" src="{% static "static/images/edit.png" %}" onclick="instructionsTable('{{ recipe.id }}')"></img>
+                    <div class="main-instructions-body">{% include 'recipes/RecipeInstructions.html' %}</div>
+                </div>
+                {% else %}
+                    <div class="main-instructions-body">{% include 'recipes/RecipeInstructions.html' %}</div>
+                {% endif %}
+                
+            </div>
+        </div>
+        <div class="main-comment-section">
+        {% include 'recipes/RecipeComments.html' %}
+    </div>
+
+    {% if user.id == recipe.author.id %}
+    <!--                    Edit (Title, Description and Category) Modal                  -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="edit-modal-header">
+                <span id="closeEdit" class="close">&times;</span>
+                <h2>Update Title and Categories</h2>
+              </div>
+            <div>
+                <p>Descriptions</p>
+                <textarea rows = "12" id="inputDescriptions" cols = "60" style="width: 100%; resize: none;"></textarea>
+            </div>
+            <button id="SubmitEdit" class="btn btn-primary my-2 my-sm-0" style="width: 25%; position:relative; left:75%;">Submit</button>
+        </div>
+    </div>
+
+    <!--                    Update Ingredient Modal                  -->
+    <div id="updateIngredientModal" class="modal">
+    <div class="modal-content">
+        <div class="ingredients-modal-header">
+            <span id="closeUpdateIngredient" class="close">&times;</span>
+            <h2>Update Ingredient</h2>
+          </div>
+        <div>
+            <td><input type="text" id="updateInputIngredient" name="updateInputIngredient" style="width: 100%;"></td><br><br>
+        </div>
+        <button id="updateSubmitIngredient" class="btn btn-primary my-2 my-sm-0" style="width: 25%; position:relative; left:75%;">Submit</button>
+    </div>
+    </div>
+
+    <!--                    Add Ingredient Modal                  -->
+    <div id="addIngredientModal" class="modal">
+        <div class="modal-content">
+            <div class="ingredients-modal-header">
+                <span id="closeAddIngredient" class="close">&times;</span>
+                <h2>Add Ingredient</h2>
+              </div>
+            <div>
+                <td><input type="text" id="addInputIngredient" name="addInputIngredient" style="width: 100%;"></td><br><br>
+            </div>
+            <button id="addSubmitIngredient" class="btn btn-primary my-2 my-sm-0" style="width: 25%; position:relative; left:75%;">Submit</button>
+        </div>
+        </div>
+
+    <!--                    Instructions Modal                  -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content">
+            <div class="instructions-modal-header">
+                <span id="closeInstructions" class="close">&times;</span>
+                <h2>Update Instructions</h2>
+              </div>
+            <div>
+                <textarea rows = "12" id="inputInstructions" name="inputInstructions" cols = "60" style="width: 100%; resize: none;"></textarea>
+            </div>
+            <button id="submitInstructions" class="btn btn-primary my-2 my-sm-0" style="width: 25%; position:relative; left:75%;">Submit</button>
+        </div>
+        </div>
+
+
+    {% endif %}
+
+<script type="text/javascript" src="{% static "static/scripts/DetailRes.js" %}"></script>
+
+
+{% endblock %}

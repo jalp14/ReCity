@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block title %}User Settings{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="settings">
+    <h3 class="block-heading">User Settings</h3>
+
+    <div class="details">
+        <p style="text-align: start;">
+            <strong>Username:</strong> {{user.username}}
+        </p>
+        <p style="text-align: start;">
+            <strong>Email:</strong> {{user.email}}
+        </p>
+        <p style="text-align: start;">
+            <strong>Date Joined:</strong> {{user.date_joined}}
+        </p>
+    </div>
+
+    <a href="{% url 'recipes:change_username' user.id %}"><button class="btn btn-primary my-2 my-sm-0">Change Username</button></a>
+    <a href="{% url 'recipes:change_password' %}"><button class="btn btn-primary my-2 my-sm-0">Change Password</button></a>
+    <a href="{% url 'recipes:delete_account' %}"><button class="btn btn-primary my-2 my-sm-0">Delete Account</button></a>
+</div>
+{% endblock %}

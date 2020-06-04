@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Edit Photo{% endblock %}
+{% load static %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alter-danger" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<a class="btn btn-primary my-2 my-sm-0" href="/recipes/recipe/{{recipe.id}}/">Back to Recipe</a>
+
+<div class="card card-body">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}<input type="submit" value="Submit">
+    </form>
+    <table class="table table-sm">
+        <tr>
+            <th>Current Thumbnail</th>
+            <th>File</th>
+            <th> </th>
+        </tr>
+
+        {% for thumbnail in recipe.thumbnail_set.all %}
+            <tr>
+                <td><img src="{{ thumbnail.image.url }}" width="190" height="190"></td>
+                <td><a>"{{ thumbnail.image.name }}"</a></td>
+                <td><a style="color: white; width: 100%;" class="btn btn-primary my-2 my-sm-0" onclick="deleteThumbnail('{{thumbnail.id}}')">Remove</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<script>
+    function deleteThumbnail(id) {
+            $.ajax({
+                type: 'POST',
+                url: '/recipes/recipe/delete-thumbnail-ajax/',
+                data:JSON.stringify({"thumbnail_id":id}),
+                contentType: 'application/json;charset=UTF-8',
+                async: false,
+                dataType: 'json',
+                success: function (response) {
+                    document.location.reload(true);
+                    if (!response.success) 
+                    {
+                        alert(response.error_msg);
+                    }
+                }
+            });
+        }
+
+        function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+</script>
+{% endblock %}
