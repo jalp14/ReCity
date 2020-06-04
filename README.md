@@ -1,4 +1,4 @@
-# CCGApp: Cloud Computing Project
+# ReCity
 ## Web App for Recipes
 
 A web app that allows you to view different types of recipes and shared by other users. You can also create your own recipes and share them with other users.
